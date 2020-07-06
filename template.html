@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Color Platte Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Color Platte Generator</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-
-</head>
-
-<body>
-  <main>
-    <div class="tools">
-      <div>
-        <input type="color" v-model="color1" />
-        <input type="text" v-model="color1" />
+  <body>
+    <main>
+      <div class="tools">
+        <div>
+          <input type="color" v-model="color1" />
+          <input type="text" v-model="color1" />
+        </div>
+        <div>
+          <div class="vertical-range">
+            <input type="range" :min="min" :max="max" v-model="steps" />
+          </div>
+          <div class="steps">{{visualSteps}} {{visualStepsLabel}}</div>
+        </div>
+        <div>
+          <input type="color" v-model="color2" />
+          <input type="text" v-model="color2" />
+        </div>
       </div>
-      <div>
-        <div class="vertical-range"><input type="range" :min="min" :max="max" v-model="steps" /></div>
-        <div class="steps">{{visualSteps}} {{visualStepsLabel}}</div>
+      <div class="colors">
+        <div class="color" v-for="color in colors" :style="setStyles(color)">
+          &nbsp;{{colorName(color)}}
+        </div>
       </div>
-      <div>
-        <input type="color" v-model="color2" />
-        <input type="text" v-model="color2" />
-      </div>
-    </div>
-    <div class="colors">
-      <div class="color" v-for="color in colors" :style="setStyles(color)">&nbsp;{{colorName(color)}}</div>
-    </div>
-  </main>
+    </main>
 
-  <!-- Include Vue CDN -->
-
-  <!-- Include Local JS -->
-  <script src="script.js"></script>
-</body>
-
+    <!-- Include Local JS -->
+    <script src="script.js"></script>
+  </body>
 </html>
